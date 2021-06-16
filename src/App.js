@@ -1,25 +1,44 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Route, Link} from 'react-router-dom'
+import perros from './perros';
+import gatos from './gatos';
+import Perro from './Perro'
+import Gato from './Gato'
 
-function App() {
+function Cabecera() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <header>
+      <h1>Rutas en React</h1>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/perros">Perros</Link>   
+          </li>
+          <li>
+            <Link to="/gatos">Gatos</Link>   
+          </li>
+        </ul>
+      </nav>
+    </header>
   );
 }
 
+function App() {
+
+
+  return (
+      <BrowserRouter>
+          <Cabecera />
+              <Route path="/perros">
+              <Perro perros={perros}/>
+              </Route>
+              <Route path="/gatos">
+              <Gato gatos={gatos}/>
+              </Route>
+      </BrowserRouter>
+  );
+}
+
+
 export default App;
+
